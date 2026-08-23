@@ -1,71 +1,56 @@
-#  Smart Scientific Calculator
+# Smart Scientific Calculator
 
-A modern and responsive scientific calculator built using HTML, CSS, and JavaScript.
+A modern, responsive, and feature-rich scientific calculator built using **HTML, CSS, and JavaScript**.
 
-This project was created as a beginner-friendly web development project to learn how HTML, CSS, and JavaScript work together.
-
----
-
-##  Live Demo
-
-You can deploy this project using GitHub Pages and add the link here.
-
-Example:
-
-https://yourusername.github.io/calculator/
+This project was developed as a learning project to understand how HTML, CSS, and JavaScript work together to create a complete interactive web application.
 
 ---
 
-##  Features
+## Live Demo
 
-- Basic arithmetic operations
+The calculator can be deployed using GitHub Pages.
+
+**Live Demo:**
+
+https://YOUR-USERNAME.github.io/smart-scientific-calculator/
+
+Replace `YOUR-USERNAME` with your GitHub username after enabling GitHub Pages.
+
+---
+
+## Project Preview
+
+![Smart Scientific Calculator](screenshot.png)
+
+Add a screenshot named `screenshot.png` to the project folder to display it here.
+
+---
+
+# Features
+
+## Basic Calculator
+
+The calculator supports all common arithmetic operations:
+
 - Addition
 - Subtraction
 - Multiplication
 - Division
 - Percentage
-- Decimal calculations
-- Scientific calculations
-- Square
-- Square root
-- Power
-- Trigonometric functions
-- Logarithm
-- Natural logarithm
-- Constants such as π and e
-- Factorial
-- Reciprocal
-- Positive/negative toggle
-- Memory functions
-- Calculation history
-- Clear history
-- Delete button
-- Keyboard support
-- Dark/light theme
-- Local storage
-- Responsive design
-- Mobile-friendly interface
+- Decimal numbers
+- Parentheses
+- Clear
+- All Clear
+- Delete
+- Equals
 
----
-
-##  Technologies Used
-
-- HTML5
-- CSS3
-- JavaScript
-- LocalStorage
-- Git
-- GitHub
-
----
-
-##  Project Structure
+### Example
 
 ```text
-calculator/
-│
-├── index.html
-├── style.css
-├── script.js
-├── README.md
-└── .gitignore
+25 + 25 = 50
+
+100 - 35 = 65
+
+8 * 5 = 40
+
+100 / 4 = 25
