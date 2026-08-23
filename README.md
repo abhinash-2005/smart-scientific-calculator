@@ -1,4 +1,4 @@
-# 🧮 Smart Scientific Calculator
+#  Smart Scientific Calculator
 
 A modern and responsive scientific calculator built using HTML, CSS, and JavaScript.
 
@@ -6,7 +6,7 @@ This project was created as a beginner-friendly web development project to learn
 
 ---
 
-## 🚀 Live Demo
+##  Live Demo
 
 You can deploy this project using GitHub Pages and add the link here.
 
@@ -16,7 +16,7 @@ https://yourusername.github.io/calculator/
 
 ---
 
-## ✨ Features
+##  Features
 
 - Basic arithmetic operations
 - Addition
@@ -48,7 +48,7 @@ https://yourusername.github.io/calculator/
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - HTML5
 - CSS3
@@ -59,7 +59,7 @@ https://yourusername.github.io/calculator/
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```text
 calculator/
