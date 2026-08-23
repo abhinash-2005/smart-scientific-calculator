@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Smart Scientific Calculator</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- =================================
+             CALCULATOR
+        ================================== -->
+
+        <div class="calculator">
+
+
+            <!-- HEADER -->
+
+            <div class="calculator-header">
+
+                <div>
+
+                    <h1>Calculator</h1>
+
+                    <p>Scientific Calculator</p>
+
+                </div>
+
+
+                <button
+                    id="themeButton"
+                    class="theme-btn"
+                    onclick="toggleTheme()"
+                >
+                    🌙
+                </button>
+
+            </div>
+
+
+
+            <!-- DISPLAY -->
+
+            <div class="display-container">
+
+                <div
+                    id="expressionDisplay"
+                    class="expression-display"
+                ></div>
+
+
+                <input
+                    type="text"
+                    id="display"
+                    readonly
+                    placeholder="0"
+                >
+
+            </div>
+
+
+
+            <!-- BUTTONS -->
+
+            <div class="buttons">
+
+
+                <!-- =================================
+                     MEMORY
+                ================================== -->
+
+                <button onclick="memoryClear()">
+                    MC
+                </button>
+
+                <button onclick="memoryRecall()">
+                    MR
+                </button>
+
+                <button onclick="memoryAdd()">
+                    M+
+                </button>
+
+                <button onclick="memorySubtract()">
+                    M-
+                </button>
+
+
+
+                <!-- =================================
+                     ADVANCED
+                ================================== -->
+
+                <button onclick="factorial()">
+                    n!
+                </button>
+
+                <button onclick="reciprocal()">
+                    1/x
+                </button>
+
+                <button onclick="absoluteValue()">
+                    |x|
+                </button>
+
+                <button onclick="toggleSign()">
+                    ±
+                </button>
+
+
+
+                <!-- =================================
+                     SCIENTIFIC
+                ================================== -->
+
+                <button onclick="appendValue('(')">
+                    (
+                </button>
+
+                <button onclick="appendValue(')')">
+                    )
+                </button>
+
+                <button onclick="squareRoot()">
+                    √
+                </button>
+
+                <button onclick="squareNumber()">
+                    x²
+                </button>
+
+
+
+                <button onclick="sinFunction()">
+                    sin
+                </button>
+
+                <button onclick="cosFunction()">
+                    cos
+                </button>
+
+                <button onclick="tanFunction()">
+                    tan
+                </button>
+
+                <button onclick="logFunction()">
+                    log
+                </button>
+
+
+
+                <button onclick="lnFunction()">
+                    ln
+                </button>
+
+                <button onclick="appendValue(Math.PI)">
+                    π
+                </button>
+
+                <button onclick="appendValue(Math.E)">
+                    e
+                </button>
+
+                <button onclick="powerNumber()">
+                    xʸ
+                </button>
+
+
+
+                <!-- =================================
+                     MORE SCIENTIFIC
+                ================================== -->
+
+                <button onclick="tenPower()">
+                    10ˣ
+                </button>
+
+                <button onclick="appendValue('**')">
+                    ^
+                </button>
+
+                <button onclick="clearDisplay()">
+                    C
+                </button>
+
+                <button onclick="deleteLast()">
+                    DEL
+                </button>
+
+
+
+                <!-- =================================
+                     BASIC
+                ================================== -->
+
+                <button
+                    class="clear"
+                    onclick="clearDisplay()"
+                >
+                    AC
+                </button>
+
+                <button onclick="appendValue('%')">
+                    %
+                </button>
+
+                <button
+                    class="operator"
+                    onclick="appendOperator('/')"
+                >
+                    ÷
+                </button>
+
+                <button
+                    class="operator"
+                    onclick="appendOperator('*')"
+                >
+                    ×
+                </button>
+
+
+
+                <button onclick="appendValue('7')">
+                    7
+                </button>
+
+                <button onclick="appendValue('8')">
+                    8
+                </button>
+
+                <button onclick="appendValue('9')">
+                    9
+                </button>
+
+                <button
+                    class="operator"
+                    onclick="appendOperator('-')"
+                >
+                    −
+                </button>
+
+
+
+                <button onclick="appendValue('4')">
+                    4
+                </button>
+
+                <button onclick="appendValue('5')">
+                    5
+                </button>
+
+                <button onclick="appendValue('6')">
+                    6
+                </button>
+
+                <button
+                    class="operator"
+                    onclick="appendOperator('+')"
+                >
+                    +
+                </button>
+
+
+
+                <button onclick="appendValue('1')">
+                    1
+                </button>
+
+                <button onclick="appendValue('2')">
+                    2
+                </button>
+
+                <button onclick="appendValue('3')">
+                    3
+                </button>
+
+                <button
+                    class="equal"
+                    onclick="calculate()"
+                >
+                    =
+                </button>
+
+
+
+                <button
+                    class="zero"
+                    onclick="appendValue('0')"
+                >
+                    0
+                </button>
+
+                <button onclick="appendValue('.')">
+                    .
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================
+             HISTORY
+        ================================== -->
+
+        <div class="history">
+
+
+            <div class="history-header">
+
+                <div>
+
+                    <h2>History</h2>
+
+                    <p>Your calculations</p>
+
+                </div>
+
+
+                <button
+                    class="clear-history"
+                    onclick="clearHistory()"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+
+
+            <div id="history-list">
+
+                <div class="empty-history">
+
+                    <div class="history-icon">
+                        🧮
+                    </div>
+
+                    <p>No calculations yet</p>
+
+                    <span>
+                        Your calculations will appear here
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

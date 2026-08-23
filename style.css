@@ -1,0 +1,982 @@
+/* ==========================================
+   GLOBAL
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --bg: #0f172a;
+    --card: #111827;
+    --display: #020617;
+    --button: #1e293b;
+    --button-hover: #334155;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --border: #263449;
+    --operator: #334155;
+    --equal: #2563eb;
+    --equal-hover: #1d4ed8;
+    --danger: #7f1d1d;
+    --danger-hover: #991b1b;
+}
+
+
+/* ==========================================
+   BODY
+========================================== */
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #1e3a5f 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #312e81 0%,
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* ==========================================
+   MAIN APP
+========================================== */
+
+.app {
+    width: 100%;
+
+    max-width: 1200px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(320px, 650px)
+        minmax(280px, 350px);
+
+    gap: 24px;
+
+    align-items: start;
+}
+
+
+/* ==========================================
+   CALCULATOR CARD
+========================================== */
+
+.calculator {
+    background:
+        rgba(17, 24, 39, 0.92);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 24px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.35);
+
+    backdrop-filter:
+        blur(15px);
+
+    animation:
+        cardEnter 0.5s ease;
+}
+
+
+@keyframes cardEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.calculator-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.calculator-header h1 {
+    font-size: 26px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+
+.calculator-header p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-top: 4px;
+}
+
+
+/* ==========================================
+   THEME BUTTON
+========================================== */
+
+.theme-btn {
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--button);
+
+    color: var(--text);
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.theme-btn:hover {
+    background:
+        var(--button-hover);
+
+    transform:
+        rotate(15deg)
+        scale(1.05);
+}
+
+
+.theme-btn:active {
+    transform:
+        scale(0.92);
+}
+
+
+/* ==========================================
+   DISPLAY
+========================================== */
+
+.display-container {
+    background:
+        var(--display);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    margin-bottom: 18px;
+
+    min-height: 120px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    overflow: hidden;
+}
+
+
+.expression-display {
+    min-height: 22px;
+
+    text-align: right;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+}
+
+
+#display {
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    text-align: right;
+
+    font-size: clamp(
+        30px,
+        5vw,
+        46px
+    );
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+}
+
+
+#display::placeholder {
+    color: #475569;
+
+    opacity: 1;
+}
+
+
+/* ==========================================
+   BUTTON GRID
+========================================== */
+
+.buttons {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+/* ==========================================
+   ALL BUTTONS
+========================================== */
+
+.buttons button {
+    min-height: 58px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        var(--button);
+
+    color:
+        var(--text);
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    border:
+        1px solid transparent;
+
+    transition:
+        transform 0.12s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.buttons button:hover {
+    background:
+        var(--button-hover);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(0, 0, 0, 0.18);
+}
+
+
+.buttons button:active {
+    transform:
+        translateY(1px)
+        scale(0.96);
+
+    box-shadow: none;
+}
+
+
+/* ==========================================
+   OPERATOR BUTTONS
+========================================== */
+
+.buttons button.operator {
+    background:
+        var(--operator);
+
+    color:
+        #93c5fd;
+}
+
+
+.buttons button.operator:hover {
+    background:
+        #475569;
+}
+
+
+/* ==========================================
+   EQUAL BUTTON
+========================================== */
+
+.buttons button.equal {
+    grid-row:
+        span 2;
+
+    background:
+        var(--equal);
+
+    color: white;
+
+    font-size: 22px;
+}
+
+
+.buttons button.equal:hover {
+    background:
+        var(--equal-hover);
+
+    box-shadow:
+        0 8px 20px
+        rgba(37, 99, 235, 0.3);
+}
+
+
+/* ==========================================
+   CLEAR BUTTON
+========================================== */
+
+.buttons button.clear {
+    background:
+        var(--danger);
+
+    color:
+        #fecaca;
+}
+
+
+.buttons button.clear:hover {
+    background:
+        var(--danger-hover);
+}
+
+
+/* ==========================================
+   ZERO BUTTON
+========================================== */
+
+.buttons button.zero {
+    grid-column:
+        span 2;
+}
+
+
+/* ==========================================
+   SCIENTIFIC BUTTONS
+========================================== */
+
+.buttons button:nth-child(-n + 20) {
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   HISTORY
+========================================== */
+
+.history {
+    background:
+        rgba(17, 24, 39, 0.92);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 24px;
+
+    padding: 22px;
+
+    max-height:
+        700px;
+
+    overflow-y: auto;
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.25);
+
+    animation:
+        cardEnter 0.6s ease;
+}
+
+
+/* ==========================================
+   HISTORY HEADER
+========================================== */
+
+.history-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+
+.history-header h2 {
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+.history-header p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-top: 3px;
+}
+
+
+/* ==========================================
+   CLEAR HISTORY
+========================================== */
+
+.clear-history {
+    border: none;
+
+    background:
+        transparent;
+
+    color:
+        #60a5fa;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    padding: 8px 10px;
+
+    border-radius: 8px;
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.clear-history:hover {
+    background:
+        rgba(96, 165, 250, 0.1);
+}
+
+
+/* ==========================================
+   HISTORY ITEM
+========================================== */
+
+.history-item {
+    padding: 15px;
+
+    margin-bottom: 10px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(30, 41, 59, 0.65);
+
+    border:
+        1px solid
+        rgba(71, 85, 105, 0.35);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border 0.18s ease;
+}
+
+
+.history-item:hover {
+    background:
+        rgba(51, 65, 85, 0.85);
+
+    transform:
+        translateX(3px);
+
+    border-color:
+        #475569;
+}
+
+
+.history-expression {
+    color:
+        var(--muted);
+
+    font-size: 13px;
+
+    overflow-wrap:
+        anywhere;
+}
+
+
+.history-result {
+    color:
+        var(--text);
+
+    font-size: 19px;
+
+    font-weight: 600;
+
+    margin-top: 5px;
+
+    overflow-wrap:
+        anywhere;
+}
+
+
+/* ==========================================
+   EMPTY HISTORY
+========================================== */
+
+.empty-history {
+    text-align: center;
+
+    padding:
+        70px 15px;
+
+    color:
+        var(--muted);
+}
+
+
+.history-icon {
+    font-size: 42px;
+
+    margin-bottom: 14px;
+
+    opacity: 0.8;
+}
+
+
+.empty-history p {
+    color:
+        var(--text);
+
+    font-weight: 600;
+
+    margin-bottom: 6px;
+}
+
+
+.empty-history span {
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+.history::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+.history::-webkit-scrollbar-track {
+    background:
+        transparent;
+}
+
+
+.history::-webkit-scrollbar-thumb {
+    background:
+        #334155;
+
+    border-radius: 10px;
+}
+
+
+/* ==========================================
+   LIGHT THEME
+========================================== */
+
+body.light {
+    --bg: #e2e8f0;
+
+    --card: #ffffff;
+
+    --display: #f8fafc;
+
+    --button: #e2e8f0;
+
+    --button-hover: #cbd5e1;
+
+    --text: #0f172a;
+
+    --muted: #64748b;
+
+    --border: #cbd5e1;
+
+    --operator: #dbeafe;
+
+    --equal: #2563eb;
+
+    --equal-hover: #1d4ed8;
+
+    --danger: #fee2e2;
+
+    --danger-hover: #fecaca;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #bfdbfe 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #ddd6fe 0%,
+            transparent 35%
+        ),
+        var(--bg);
+}
+
+
+body.light .calculator,
+body.light .history {
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    box-shadow:
+        0 20px 50px
+        rgba(15, 23, 42, 0.12);
+}
+
+
+body.light .buttons button {
+    color:
+        var(--text);
+}
+
+
+body.light .buttons button.operator {
+    color:
+        #1d4ed8;
+}
+
+
+body.light .history-item {
+    background:
+        rgba(241, 245, 249, 0.9);
+
+    border-color:
+        #e2e8f0;
+}
+
+
+body.light .history-item:hover {
+    background:
+        #e2e8f0;
+
+    border-color:
+        #cbd5e1;
+}
+
+
+body.light #display {
+    color:
+        #0f172a;
+}
+
+
+body.light .theme-btn {
+    color:
+        #0f172a;
+}
+
+
+/* ==========================================
+   FOCUS ACCESSIBILITY
+========================================== */
+
+button:focus-visible {
+    outline:
+        3px solid
+        rgba(96, 165, 250, 0.6);
+
+    outline-offset:
+        2px;
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (
+    max-width: 900px
+) {
+
+    .app {
+
+        grid-template-columns:
+            1fr;
+
+        max-width:
+            650px;
+
+    }
+
+
+    .history {
+
+        max-height:
+            400px;
+
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (
+    max-width: 520px
+) {
+
+    body {
+
+        padding:
+            12px;
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .app {
+
+        gap:
+            14px;
+
+    }
+
+
+    .calculator {
+
+        padding:
+            15px;
+
+        border-radius:
+            19px;
+
+    }
+
+
+    .calculator-header {
+
+        margin-bottom:
+            14px;
+
+    }
+
+
+    .calculator-header h1 {
+
+        font-size:
+            22px;
+
+    }
+
+
+    .display-container {
+
+        min-height:
+            105px;
+
+        padding:
+            14px;
+
+        border-radius:
+            15px;
+
+    }
+
+
+    .buttons {
+
+        gap:
+            7px;
+
+    }
+
+
+    .buttons button {
+
+        min-height:
+            52px;
+
+        border-radius:
+            11px;
+
+        font-size:
+            14px;
+
+    }
+
+
+    .buttons button:nth-child(
+        -n + 20
+    ) {
+
+        font-size:
+            12px;
+
+    }
+
+
+    .buttons button.equal {
+
+        font-size:
+            19px;
+
+    }
+
+
+    .history {
+
+        border-radius:
+            19px;
+
+        padding:
+            17px;
+
+    }
+
+}
+
+
+/* ==========================================
+   VERY SMALL PHONES
+========================================== */
+
+@media (
+    max-width: 360px
+) {
+
+    body {
+
+        padding:
+            7px;
+
+    }
+
+
+    .calculator {
+
+        padding:
+            11px;
+
+    }
+
+
+    .buttons {
+
+        gap:
+            5px;
+
+    }
+
+
+    .buttons button {
+
+        min-height:
+            46px;
+
+        border-radius:
+            9px;
+
+    }
+
+
+    #display {
+
+        font-size:
+            28px;
+
+    }
+
+}
